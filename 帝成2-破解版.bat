@@ -83,7 +83,7 @@ set /p choice=若都完成，请输入1后开始游戏：
 if %choice%==1 (
 	D:
 	cd "DC2_XiuXiu"
-	git push
+	git pull
 	call :ColorText 0a  "篡改脚本更新完成，请打开Flidder"
 	echo.
 	echo.
