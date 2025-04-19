@@ -44,25 +44,15 @@ if %errorlevel% equ 0 (
     git --version
 	
 	:: 检查Git检出目录是否存在
-	set "git_target_dir=D:\DC2XiuXiu"
+	set "git_target_dir=D:\DC2_XiuXiu"
 	if not exist "!git_target_dir!" (
-		echo Git检出目录 "!git_target_dir!" 不存在，正在创建...
-		mkdir "!git_target_dir!"
-		if exist "!git_target_dir!" (
-			echo Git检出目录 "!git_target_dir!" 创建成功！
-			cd "!git_target_dir!"
-			echo 开始从远程拉取项目
-			cd
-			git clone https://github.com/DJ-HeYong/DC2_XiuXiu.git
-		) else (
-			echo Git检出目录 "!git_target_dir!" 创建失败！
-			pause
-			exit
-		)
+		echo Git检出目录 "!git_target_dir!" 不存在，需要执行clone...
+		echo 开始从远程拉取项目
+		D:
+		git clone https://github.com/DJ-HeYong/DC2_XiuXiu.git
 	) else (
-		echo Git检出目录 "!git_target_dir!" 已存在, 无需创建。
+		echo Git检出目录 "!git_target_dir!" 已存在, 无需重新clone
 	)
-
 ) else (
     call :ColorText 4e "检测失败...Git 未安装，这会导致无法获取最新的纂改代码"
 	pause
@@ -92,7 +82,7 @@ echo.
 set /p choice=若都完成，请输入1后开始游戏：
 if %choice%==1 (
 	D:
-	cd "DC2_XiuXiu\DC2_XiuXiu"
+	cd "DC2_XiuXiu"
 	git push
 	call :ColorText 0a  "篡改脚本更新完成，请打开Flidder"
 	echo.
